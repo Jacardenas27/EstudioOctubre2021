@@ -60,9 +60,16 @@ require_once("header.php");
             <h5 class="m-0">Featured</h5>
           </div>
           <div class="card-body">
-            <h6 class="card-title">Special title treatment</h6>
+            <h6 class="card-title">Contraseña encriptada</h6>
 
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <p class="card-text">
+              <?php
+              $password = password_hash("administrador2021", null);
+                echo $password."<br>";
+
+                echo (password_verify("administrador2021", $password)) ? "Concuerda" : "Incorrecta";
+              ?>
+            </p>
             <a href="#" class="btn btn-primary">Go somewhere</a>
           </div>
         </div>
