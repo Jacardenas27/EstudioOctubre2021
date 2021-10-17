@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-10-2021 a las 03:06:40
+-- Tiempo de generación: 17-10-2021 a las 03:12:41
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 8.0.3
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `avatares` (
-  `id` int(11) NOT NULL,
+  `idAvatar` int(11) NOT NULL,
   `nombreAvatar` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -36,7 +36,7 @@ CREATE TABLE `avatares` (
 -- Volcado de datos para la tabla `avatares`
 --
 
-INSERT INTO `avatares` (`id`, `nombreAvatar`) VALUES
+INSERT INTO `avatares` (`idAvatar`, `nombreAvatar`) VALUES
 (1, '001-antelope.svg'),
 (2, '002-bat.svg'),
 (3, '003-bear.svg'),
@@ -105,7 +105,7 @@ INSERT INTO `avatares` (`id`, `nombreAvatar`) VALUES
 --
 
 CREATE TABLE `usuarios` (
-  `id` int(11) NOT NULL,
+  `idUsuario` int(11) NOT NULL,
   `nombres` varchar(50) NOT NULL,
   `apellidos` varchar(50) NOT NULL,
   `fechaNacimiento` date NOT NULL,
@@ -119,7 +119,7 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombres`, `apellidos`, `fechaNacimiento`, `correo`, `contrasena`, `administrador`, `estado`) VALUES
+INSERT INTO `usuarios` (`idUsuario`, `nombres`, `apellidos`, `fechaNacimiento`, `correo`, `contrasena`, `administrador`, `estado`) VALUES
 (1, 'Administrador', 'del Sistema', '2000-01-01', 'administrador@administrador.com', 'contrasena', 1, 1);
 
 --
@@ -130,13 +130,13 @@ INSERT INTO `usuarios` (`id`, `nombres`, `apellidos`, `fechaNacimiento`, `correo
 -- Indices de la tabla `avatares`
 --
 ALTER TABLE `avatares`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`idAvatar`);
 
 --
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`idUsuario`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -146,13 +146,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `avatares`
 --
 ALTER TABLE `avatares`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `idAvatar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
