@@ -13,6 +13,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="../publico/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../publico/dist/css/adminlte.css">
+    <link rel="stylesheet" href="../publico/plugins/datatables-bs4/css/dataTables.bootstrap4.css"></link>
 </head>
 
 <body class="hold-transition sidebar-mini sidebar-collapse">
@@ -151,6 +152,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </aside><!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <div class="container p-3">
-            <!-- Content Header (Page header) -->
-            <div class="content-header">
-                <div class="container-fluid">
+                <!-- Content Header (Page header) -->
+                <div class="content-header">
+                    <div class="container-fluid">
+                        <div class="row mb-2">
+                            <div class="col-sm-6">
+                                <h1 class="m-0">Página de inicio</h1>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.container-fluid -->
+                </div>
+                <!-- /.content-header -->
+                <!-- Main content -->
+                <div class="content">
+                    <div class="container-fluid">

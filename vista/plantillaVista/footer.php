@@ -1,3 +1,4 @@
+</div>
 <!-- /.container-fluid -->
 </div>
 <!-- /.content -->
@@ -36,6 +37,9 @@
 <script src="../publico/plugins/bootstrap/js/bootstrap.js"></script>
 <!-- AdminLTE App -->
 <script src="../publico/dist/js/adminlte.js"></script>
+<script src="../publico/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../publico/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="../publico/dist/js/funciones.js"></script>
 </body>
 
 </html>
