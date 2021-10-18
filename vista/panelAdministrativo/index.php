@@ -1,5 +1,5 @@
 <?php
-require_once("header.php");
+require_once("../plantillaVista/header.php");
 ?>
 <div class="row">
   <div class="col-lg-6">
@@ -67,5 +67,5 @@ require_once("header.php");
 </div>
 <!-- /.row -->
 <?php
-require_once("footer.php");
+require_once("../plantillaVista/footer.php");
 ?>

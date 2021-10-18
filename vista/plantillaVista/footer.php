@@ -20,7 +20,7 @@
 <!-- Main Footer -->
 <footer class="main-footer">
     <!-- To the right -->
-    <div class="float-right d-none d-sm-inline">
+    <div class="float-right d-none d-sm-block">
         Anything you want
     </div>
     <!-- Default to the left -->
@@ -39,6 +39,9 @@
 <script src="../publico/dist/js/adminlte.js"></script>
 <script src="../publico/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="../publico/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="../publico/plugins/sweetalert2/sweetalert2.all.min.js"></script>
+<script src="../publico/plugins/moment/moment-with-locales.min.js"></script>
+<script src="../publico/plugins/jquery-validation/jquery.validate.min.js"></script>
 <script src="../publico/dist/js/funciones.js"></script>
 </body>
 

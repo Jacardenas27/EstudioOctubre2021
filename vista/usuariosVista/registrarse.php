@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../publico/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../publico/dist/css/adminlte.css">
+    <link rel="stylesheet" href="../publico/dist/css/estilos.css">
     <!-- icheck bootstrap -->
     <link rel="stylesheet" href="../publico/plugins/icheck-bootstrap/icheck-bootstrap.css">
 </head>
@@ -41,8 +42,11 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="date" class="form-control" id="FechaNacimiento" name="FechaNacimiento">
+                        <input type="date" class="form-control m-0" id="FechaNacimiento" name="FechaNacimiento">
                         <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="far fa-calendar-alt"></span>
+                            </div>
                         </div>
                     </div>
                     <div class="input-group mb-3">

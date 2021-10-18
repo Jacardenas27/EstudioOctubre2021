@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../publico/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../publico/dist/css/adminlte.css">
+    <link rel="stylesheet" href="../publico/dist/css/estilos.css">
     <!-- icheck bootstrap -->
     <link rel="stylesheet" href="../publico/plugins/icheck-bootstrap/icheck-bootstrap.css">
 </head>
