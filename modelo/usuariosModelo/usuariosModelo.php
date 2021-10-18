@@ -113,7 +113,7 @@ class usuarioModelo
         $sql = $Db->prepare("SELECT usuarios.*, avatares.nombreAvatar FROM usuarios 
          JOIN avatares ON  usuarios.IdAvatar = avatares.idAvatar
           WHERE correo = :correo ");
-        $sql->bindValue("correo", $this->getCorreo());
+        $sql->bindValue("correo", strtolower($this->getCorreo()));
 
         try {
 
@@ -123,9 +123,65 @@ class usuarioModelo
                 return $Usuario;
             }
             return [];
-
         } catch (Exception $e) {
             echo "Ha ocurrido un error: " . $e->getMessage();
         }
+    }
+
+
+    function Registrarse()
+    {
+
+        $RegistroExitoso = false;
+        $Db = conexion::conectar();
+        $sql = $Db->prepare("INSERT INTO USUARIOS VALUES (NULL, :Nombres,:Apellidos,:FechaNacimiento,:Correo,:Contrasena,0,1,1 ) ");
+
+        $sql->bindValue("Nombres", strtoupper($this->getNombres()));
+        $sql->bindValue("Apellidos", strtoupper($this->getApellidos()));
+        $sql->bindValue("FechaNacimiento", $this->getFechaNacimiento());
+        $sql->bindValue("Correo", strtolower($this->getCorreo()));
+        $sql->bindValue("Contrasena", password_hash($this->getContrasena(), NULL));
+
+        try {
+            $sql->execute();
+            $RegistroExitoso = true;
+            return $RegistroExitoso;
+        } catch (Exception $e) {
+            echo ("Ha ocurrido un error" . $e->getMessage());
+        }
+    }
+
+    function ListarUsuarios()
+    {
+
+        $Db = conexion::conectar();
+        $sql = $Db->query("SELECT idUsuario,nombres,apellidos,fechaNacimiento,correo,administrador,estado FROM usuarios ORDER BY nombres ASC");
+        try {
+            $sql->execute();
+            $Usuarios = $sql->fetchAll(PDO::FETCH_ASSOC);
+            return $Usuarios;
+        } catch (Exception  $e) {
+            echo ("Ha ocurrido un error" . $e->getMessage());
+        }
+    }
+
+
+    function ListarDatosUsuario(){
+
+        $Db = conexion::conectar();
+       $sql= $Db->prepare("SELECT u.idUsuario,u.nombres,u.apellidos,u.fechaNacimiento,u.correo,u.administrador,u.estado,u.idAvatar,a.nombreAvatar FROM usuarios u JOIN avatares a ON u.idAvatar= a.idAvatar WHERE u.idUsuario=:idUsuario");
+       $sql->bindValue('idUsuario',$this->getIdUsuario());
+       
+       try {
+        $sql->execute();
+        $Usuario= $sql->fetch(PDO::FETCH_ASSOC);
+
+        return $Usuario;
+
+       } catch (Exception $e) {
+          echo("ha ocurrido un error" .$e->getMessage());
+       }
+
+
     }
 }

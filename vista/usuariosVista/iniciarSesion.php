@@ -54,7 +54,7 @@
                         </div> -->
                         <!-- /.col -->
                         <div class="col-6">
-                            <button type="submit" id="IniciarSesion" name="IniciarSesion" class="btn btn-primary btn-block">Iniciar sesión</button>
+                            <button type="submit" id="IniciarSesion" name="IniciarSesion" class="btn btn-sm btn-outline-primary btn-block">Iniciar sesión</button>
                         </div>
                         <!-- /.col -->
                     </div>
@@ -80,6 +80,7 @@
     <script src="../publico/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../publico/dist/js/adminlte.js"></script>
+    <script src="../publico/dist/js/funciones.js"></script>
 </body>
 
 </html>

@@ -23,7 +23,7 @@
             <div class="card-body register-card-body">
                 <p class="login-box-msg">Registrarse en el sistema</p>
 
-                <form action="../../index.html" method="post">
+                <form action="../../controlador/usuariosControlador/usuariosControlador.php" method="post">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" id="Nombres" name="Nombres" placeholder="Nombres">
                         <div class="input-group-append">
@@ -71,7 +71,7 @@
                     </div>
                     <div class="row justify-content-end">
                         <div class="col-6">
-                            <button type="submit" class="btn btn-primary btn-block">Register</button>
+                            <button type="submit" id="Registrarse" name="Registrarse" class="btn btn-sm btn-outline-primary btn-block">Registrarme</button>
                         </div>
                         <!-- /.col -->
                     </div>
@@ -89,6 +89,7 @@
     <script src="../publico/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../publico/dist/js/adminlte.js"></script>
+    <script src="../publico/dist/js/funciones.js"></script>
 </body>
 
 </html>
