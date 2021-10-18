@@ -41,7 +41,12 @@ $ListaDatosUsuario = $UsuarioModel->ListarDatosUsuario();
                 </div>
                     <small class="ml-2">Fecha de nacimiento</small>
                 <div class="input-group mb-2">
-                    <input type="date" class="form-control" id="FechaNacimiento" name="FechaNacimiento" value="<?php echo $ListaDatosUsuario['fechaNacimiento']; ?>">
+                    <input type="text" class="form-control" id="FechaNacimiento" name="FechaNacimiento" value="<?php echo $ListaDatosUsuario['fechaNacimiento']; ?>" placeholder="Fecha de nacimiento">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-calendar-alt"></span>
+                        </div>
+                    </div>
                 </div>
                     <small class="ml-2">Correo electrónico</small>
                 <div class="input-group mb-2">

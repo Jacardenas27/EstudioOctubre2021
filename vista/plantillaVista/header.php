@@ -15,6 +15,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="../publico/dist/css/adminlte.css">
     <link rel="stylesheet" href="../publico/dist/css/estilos.css">
     <link rel="stylesheet" href="../publico/plugins/datatables-bs4/css/dataTables.bootstrap4.css"></link>
+    <link rel="stylesheet" href="../publico/plugins/jquery-ui/jquery-ui.css">
     <link rel="stylesheet" href="../publico/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.css">
 </head>
 

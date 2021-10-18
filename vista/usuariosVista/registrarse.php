@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../publico/dist/css/estilos.css">
     <!-- icheck bootstrap -->
     <link rel="stylesheet" href="../publico/plugins/icheck-bootstrap/icheck-bootstrap.css">
+    <link rel="stylesheet" href="../publico/plugins/jquery-ui/jquery-ui.css">
 </head>
 
 <body class="hold-transition register-page">
@@ -41,8 +42,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="input-group mb-3">
-                        <input type="date" class="form-control m-0" id="FechaNacimiento" name="FechaNacimiento">
+                    <div class="input-group mb-3" data-provide="datepicker">
+                        <input type="text" class="form-control m-0" id="FechaNacimiento" name="FechaNacimiento" placeholder="Fecha de nacimiento">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="far fa-calendar-alt"></span>
@@ -91,6 +92,7 @@
     <script src="../publico/plugins/jquery/jquery.js"></script>
     <!-- Bootstrap 4 -->
     <script src="../publico/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../publico/plugins/jquery-ui/jquery-ui.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../publico/dist/js/adminlte.js"></script>
     <script src="../publico/dist/js/funciones.js"></script>
