@@ -95,6 +95,7 @@
     <script src="../publico/plugins/jquery-ui/jquery-ui.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../publico/dist/js/adminlte.js"></script>
+<script src="../publico/plugins/jquery-validation/jquery.validate.js"></script>
     <script src="../publico/dist/js/funciones.js"></script>
 </body>
 

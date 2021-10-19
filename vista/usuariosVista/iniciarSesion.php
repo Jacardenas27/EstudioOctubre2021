@@ -79,6 +79,7 @@
     <script src="../publico/plugins/jquery/jquery.js"></script>
     <!-- Bootstrap 4 -->
     <script src="../publico/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../publico/plugins/jquery-validation/jquery.validate.js"></script>
     <!-- AdminLTE App -->
     <script src="../publico/dist/js/adminlte.js"></script>
     <script src="../publico/dist/js/funciones.js"></script>

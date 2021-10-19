@@ -4,34 +4,30 @@ require_once("../../modelo/usuariosModelo/usuariosModelo.php");
 
 $UsuarioModel = new usuarioModelo();
 
-if(isset($_POST["Registrarse"])){
+if (isset($_POST["Registrarse"])) {
     $UsuarioModel->setNombres($_POST['Nombres']);
     $UsuarioModel->setApellidos($_POST['Apellidos']);
     $UsuarioModel->setFechaNacimiento($_POST['FechaNacimiento']);
     $UsuarioModel->setCorreo($_POST['Correo']);
     $UsuarioModel->setContrasena($_POST['Contrasena']);
- 
-    $UsuarioRegistrado = $UsuarioModel->Registrarse();
-    if($UsuarioRegistrado){
-        ?>
-            <script>
-                 alert("Usuario registrado correctamente  ");
-                 window.location.href = "../../vista/usuariosVista/iniciarSesion.php";
-            </script>
-        <?php
-    }else{
-        ?>
+    $UsuarioModel->setAdministrador(0);
+
+    $UsuarioRegistrado = $UsuarioModel->RegistrarUsuario();
+    if ($UsuarioRegistrado) {
+?>
         <script>
-                window.location.href = "../../vista/usuariosVista/iniciarSesion.php";
+            alert("Usuario registrado correctamente  ");
+            window.location.href = "../../vista/usuariosVista/iniciarSesion.php";
         </script>
     <?php
+    } else {
+    ?>
+        <script>
+            window.location.href = "../../vista/usuariosVista/iniciarSesion.php";
+        </script>
+        <?php
     }
-
 }
-
-
-
-
 if (isset($_POST["IniciarSesion"])) {
     $UsuarioModel->setCorreo($_POST['Correo']);
     $UsuarioModel->setContrasena($_POST['Contrasena']);
@@ -52,9 +48,9 @@ if (isset($_POST["IniciarSesion"])) {
             $_SESSION['Estado'] = $UsuarioEncontrado['estado'];
             $_SESSION['IdAvatar'] = $UsuarioEncontrado['idAvatar'];
             $_SESSION['NombreAvatar'] = $UsuarioEncontrado['nombreAvatar'];
-?>
+        ?>
             <script>
-                window.location.href = "../../vista/plantillaVista/index.php";
+                window.location.href = "../../vista/panelAdministrativo/index.php";
             </script>
         <?php
 
@@ -72,7 +68,64 @@ if (isset($_POST["IniciarSesion"])) {
             alert("Correo o contraseña incorrecta");
             window.location.href = "../../vista/usuariosVista/iniciarSesion.php";
         </script>
-<?php
+    <?php
 
+    }
+}
+
+if (isset($_POST['EditarUsuario'])) {
+    $UsuarioModel->setIdUsuario($_POST['IdUsuario']);
+    $UsuarioModel->setNombres($_POST['Nombres']);
+    $UsuarioModel->setApellidos($_POST['Apellidos']);
+    $UsuarioModel->setFechaNacimiento($_POST['FechaNacimiento']);
+    $UsuarioModel->setCorreo($_POST['Correo']);
+    $UsuarioModel->setAdministrador($_POST['Administrador']);
+
+    $EditadoExitoso = $UsuarioModel->EditarUsuario();
+
+    if ($EditadoExitoso) {
+    ?>
+        <script>
+            alert("Usuario editado correctamente ");
+            window.location.href = "../../vista/usuariosVista/consultarUsuarios.php";
+        </script>
+    <?php
+    } else {
+    ?>
+        <script>
+            alert("Ocorrio un error en el ediatr ");
+            // window.location.href = "../../vista/usuariosVista/consultarUsuarios.php";
+        </script>
+    <?php
+    }
+}
+
+if (isset($_POST["RegistrarUsuario"])) {
+
+    $Correo = explode("@", $_POST['Correo']);
+    $Fecha = explode("-", ($_POST['FechaNacimiento']));
+    $ContrasenaUsuario = strtolower($Correo[0] . $Fecha[2] . $Fecha[1] . $Fecha[0]);
+
+    $UsuarioModel->setNombres($_POST['Nombres']);
+    $UsuarioModel->setApellidos($_POST['Apellidos']);
+    $UsuarioModel->setFechaNacimiento($_POST['FechaNacimiento']);
+    $UsuarioModel->setCorreo($_POST['Correo']);
+    $UsuarioModel->setAdministrador($_POST['Administrador']);
+    $UsuarioModel->setContrasena($ContrasenaUsuario);
+
+    $UsuarioRegistrado = $UsuarioModel->RegistrarUsuario();
+    if ($UsuarioRegistrado) {
+    ?>
+        <script>
+            alert("Usuario registrado correctamente  ");
+            window.location.href = "../../vista/usuariosVista/iniciarSesion.php";
+        </script>
+    <?php
+    } else {
+    ?>
+        <script>
+            window.location.href = "../../vista/usuariosVista/iniciarSesion.php";
+        </script>
+<?php
     }
 }

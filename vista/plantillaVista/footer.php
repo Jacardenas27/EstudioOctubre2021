@@ -41,7 +41,7 @@
 <script src="../publico/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="../publico/plugins/sweetalert2/sweetalert2.all.min.js"></script>
 <script src="../publico/plugins/moment/moment-with-locales.min.js"></script>
-<script src="../publico/plugins/jquery-validation/jquery.validate.min.js"></script>
+<script src="../publico/plugins/jquery-validation/jquery.validate.js"></script>
     <script src="../publico/plugins/jquery-ui/jquery-ui.min.js"></script>
 <script src="../publico/dist/js/funciones.js"></script>
 </body>
