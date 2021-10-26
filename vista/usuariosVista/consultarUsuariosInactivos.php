@@ -22,26 +22,29 @@ $ListaUsuarios = $UsuarioModel->ListarUsuarios();
     <tbody>
 
         <?php foreach ($ListaUsuarios as $value) { ?>
-            <tr>
-                <td><?php echo $value['nombres']; ?></td>
-                <td><?php echo $value['apellidos']; ?></td>
-                <td><?php echo $value['fechaNacimiento']; ?></td>
-                <td><?php echo $value['correo']; ?></td>
-                <td><?php echo ($value['administrador'] == 1) ? "Sí" : "No"; ?> </td>
-                <td>
-                    <a href="editarUsuario.php?idUsuario=<?php echo $value['idUsuario'] ?>" id="editarUsuario" name="editarUsuario" class="btn btn-outline-primary" title="Editar usuario">
-                        <i class="far fa-edit"></i>
-                    </a>
-                    <a id="cambiarEstado" name="cambiarEstado" class="btn btn-outline-success" title="Habilitar usuario">
-                    <i class="far fa-check-circle"></i>
-                    </a>
+            <?php if ($value['estado'] == 0) { ?>
+                <tr>
+                    <td><?php echo $value['nombres']; ?></td>
+                    <td><?php echo $value['apellidos']; ?></td>
+                    <td><?php echo $value['fechaNacimiento']; ?></td>
+                    <td><?php echo $value['correo']; ?></td>
+                    <td><?php echo ($value['administrador'] == 1) ? "Sí" : "No"; ?> </td>
+                    <td>
+                        <a href="editarUsuario.php?idUsuario=<?php echo $value['idUsuario'] ?>" id="editarUsuario" name="editarUsuario" class="btn btn-outline-primary" title="Editar usuario">
+                            <i class="far fa-edit"></i>
+                        </a>
+                        <a id="cambiarEstado" name="cambiarEstado" href="../../controlador/usuariosControlador/usuariosControlador.php?idUsuario=<?php echo $value['idUsuario']?>&desactivar=false"  class="btn btn-outline-success" title="Habilitar usuario">
+                            <i class="far fa-check-circle"></i>
+                        </a>
 
-                </td>
-            </tr>
+                    </td>
+                </tr>
+            <?php
+            }
+            ?>
         <?php
         }
         ?>
-
 
     </tbody>
 </table>

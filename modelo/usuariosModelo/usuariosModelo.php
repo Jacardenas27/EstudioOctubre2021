@@ -209,4 +209,22 @@ class usuarioModelo
         }
 
     }
+
+    function CambiarEstado(){
+        $cambioExitoso=false;
+        $Db = conexion::conectar();
+        $sql = $Db->prepare("UPDATE usuarios SET estado=:estado WHERE idUsuario=:idUsuario");
+
+        $sql->bindValue("estado",$this->getEstado());
+        $sql->bindValue("idUsuario",$this->getIdUsuario());
+        try{
+            $sql->execute();
+            $cambioExitoso= true;
+            return $cambioExitoso;
+
+        }catch( Exception $e){
+            echo ("ha ocurrido un error".$e->getMessage());
+        }
+
+    }
 }

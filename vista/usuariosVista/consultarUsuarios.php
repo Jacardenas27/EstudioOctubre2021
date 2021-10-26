@@ -21,8 +21,9 @@ $ListaUsuarios = $UsuarioModel->ListarUsuarios();
         </tr>
     </thead>
     <tbody>
-
+       
         <?php foreach ($ListaUsuarios as $value) { ?>
+            <?php if ( $value['estado']==1){?>
             <tr>
                 <td><?php echo $value['nombres']; ?></td>
                 <td><?php echo $value['apellidos']; ?></td>
@@ -33,12 +34,15 @@ $ListaUsuarios = $UsuarioModel->ListarUsuarios();
                     <a href="editarUsuario.php?idUsuario=<?php echo $value['idUsuario'] ?>" id="editarUsuario" name="editarUsuario" class="btn btn-outline-primary" title="Editar usuario">
                         <i class="far fa-edit"></i>
                     </a>
-                    <a id="cambiarEstado" name="cambiarEstado" class="btn btn-outline-danger" title="Deshabilitar usuario">
+                    <a id="cambiarEstado" name="cambiarEstado" href="../../controlador/usuariosControlador/usuariosControlador.php?idUsuario=<?php echo $value['idUsuario']?>&desactivar=true" class="btn btn-outline-danger" title="Deshabilitar usuario">
                     <i class="far fa-times-circle"></i>
                     </a>
 
                 </td>
             </tr>
+            <?php
+        }
+        ?>
         <?php
         }
         ?>
@@ -46,6 +50,7 @@ $ListaUsuarios = $UsuarioModel->ListarUsuarios();
 
     </tbody>
 </table>
+
 <?php
 require_once("../plantillaVista/footer.php");
 ?>

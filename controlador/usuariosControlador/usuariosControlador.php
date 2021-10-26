@@ -126,6 +126,36 @@ if (isset($_POST["RegistrarUsuario"])) {
         <script>
             window.location.href = "../../vista/usuariosVista/iniciarSesion.php";
         </script>
+    <?php
+    }
+}
+
+if ($_GET["desactivar"] == 'true') {
+    $UsuarioModel->setIdUsuario($_GET["idUsuario"]);
+    $UsuarioModel->setEstado(0);
+
+    $cambioExitoso = $UsuarioModel->cambiarEstado();
+    if ($cambioExitoso) {
+    ?>
+        <script>
+            alert("Usuario desactivado correctamente  ");
+            window.location.href = "../../vista/usuariosVista/consultarUsuarios.php";
+        </script>
+    <?php
+
+    }
+} else if ($_GET["desactivar"] == 'false')  {
+    $UsuarioModel->setIdUsuario($_GET["idUsuario"]);
+    $UsuarioModel->setEstado(1);
+
+    $cambioExitoso = $UsuarioModel->cambiarEstado();
+    if ($cambioExitoso) {
+    ?>
+        <script>
+            alert("Uusario activado correctamente ");
+            window.location.href = "../../vista/usuariosVista/consultarUsuariosInactivos.php";
+        </script>
 <?php
+
     }
 }
