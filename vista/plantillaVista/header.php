@@ -46,7 +46,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <i class="fas fa-user"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <a href="miPerfil.php" class="dropdown-item">
+                        <a href="../usuariosVista/miPerfil.php" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
                                 <div class="media-body">
@@ -72,7 +72,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <!-- Message End -->
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="cambiarContrasena.php" class="dropdown-item">
+                        <a href="../usuariosVista/cambiarContrasena.php" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
                                 <div class="media-body">
