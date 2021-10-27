@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once("../../modelo/conexion.php");
 require_once("../../modelo/usuariosModelo/usuariosModelo.php");
 
@@ -130,7 +131,7 @@ if (isset($_POST["RegistrarUsuario"])) {
     }
 }
 
-if ($_GET["desactivar"] == 'true') {
+if (isset($_GET["desactivar"]) == 'true') {
     $UsuarioModel->setIdUsuario($_GET["idUsuario"]);
     $UsuarioModel->setEstado(0);
 
@@ -144,7 +145,7 @@ if ($_GET["desactivar"] == 'true') {
     <?php
 
     }
-} else if ($_GET["desactivar"] == 'false')  {
+} else if (isset($_GET["desactivar"]) == 'false') {
     $UsuarioModel->setIdUsuario($_GET["idUsuario"]);
     $UsuarioModel->setEstado(1);
 
@@ -155,7 +156,27 @@ if ($_GET["desactivar"] == 'true') {
             alert("Uusario activado correctamente ");
             window.location.href = "../../vista/usuariosVista/consultarUsuariosInactivos.php";
         </script>
-<?php
+    <?php
 
+    }
+}
+
+
+if (isset($_POST['ActualizarDatos'])) {
+    $UsuarioModel->setIdUsuario($_SESSION['IdUsuario']);
+    $UsuarioModel->setNombres($_POST['Nombres']);
+    $UsuarioModel->setApellidos($_POST['Apellidos']);
+    $UsuarioModel->setFechaNacimiento($_POST['FechaNacimiento']);
+    $UsuarioModel->setCorreo($_POST['Correo']);
+    $UsuarioModel->setAdministrador($_POST['Administrador']);
+
+    $actualizarExitoso = $UsuarioModel->EditarUsuario();
+    if ($actualizarExitoso) {
+    ?>
+        <script>
+            alert("Perfil actualizado");
+            window.location.href = "../../vista/usuariosVista/miPerfil.php";
+        </script>
+<?php
     }
 }

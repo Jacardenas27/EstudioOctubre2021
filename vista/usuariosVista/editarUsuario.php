@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 require_once("../plantillaVista/header.php");
 require_once("../../modelo/conexion.php");
 require_once("../../modelo/usuariosModelo/usuariosModelo.php");
@@ -6,7 +8,6 @@ require_once("../../modelo/usuariosModelo/usuariosModelo.php");
 $UsuarioModel = new usuarioModelo();
 $UsuarioModel->setIdUsuario($_GET['idUsuario']);
 $ListaDatosUsuario = $UsuarioModel->ListarDatosUsuario();
-
 
 ?>
 <div class="d-flex justify-content-center">
@@ -19,7 +20,6 @@ $ListaDatosUsuario = $UsuarioModel->ListarDatosUsuario();
             </div>
             <p class="login-box-msg text-center font-weight-bold mt-0"><?php echo ucfirst(substr($ListaDatosUsuario["nombreAvatar"], 4, -4)); ?></p>
             <form action="../../controlador/usuariosControlador/usuariosControlador.php" method="post">
-
                 <input type="hidden" id="IdUsuario" name="IdUsuario" value="<?php echo $_GET['idUsuario']; ?>">
                 <small class="ml-2">Nombres</small>
                 <div class="input-group mb-2">

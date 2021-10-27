@@ -196,7 +196,7 @@ class usuarioModelo
         $sql->bindValue("nombres", strtoupper($this->getNombres()));
         $sql->bindValue("apellidos", strtoupper($this->getApellidos()));
         $sql->bindValue("fechaNacimiento",$this->getFechaNacimiento());
-        $sql->bindValue("correo",$this->getCorreo());
+        $sql->bindValue("correo",strtolower($this->getCorreo()));
         $sql->bindValue("administrador",$this->getAdministrador());
 
         try{
