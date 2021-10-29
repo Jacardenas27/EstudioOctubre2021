@@ -59,7 +59,7 @@ if (isset($_POST["IniciarSesion"])) {
         ?>
             <script>
                 alert("Usuario inactivo");
-                // window.location.href = "../../vista/usuariosVista/iniciarSesion.php";
+                window.location.href = "../../vista/usuariosVista/iniciarSesion.php";
             </script>
         <?php
         }
@@ -153,14 +153,13 @@ if (isset($_GET["desactivar"]) == 'true') {
     if ($cambioExitoso) {
     ?>
         <script>
-            alert("Uusario activado correctamente ");
+            alert("Usuario activado correctamente ");
             window.location.href = "../../vista/usuariosVista/consultarUsuariosInactivos.php";
         </script>
     <?php
 
     }
 }
-
 
 if (isset($_POST['ActualizarDatos'])) {
     $UsuarioModel->setIdUsuario($_SESSION['IdUsuario']);
@@ -177,6 +176,54 @@ if (isset($_POST['ActualizarDatos'])) {
             alert("Perfil actualizado");
             window.location.href = "../../vista/usuariosVista/miPerfil.php";
         </script>
+    <?php
+    }
+}
+
+if ((isset($_GET["desactivarMiCuenta"]) == 'True')) {
+
+    $UsuarioModel->setIdUsuario($_SESSION['IdUsuario']);
+    $UsuarioModel->setEstado(0);
+
+    $DesactivarExitoso = $UsuarioModel->CambiarEstado();
+
+    if ($DesactivarExitoso) {
+    ?>
+        <script>
+            alert("Cuenta desactivada");
+            window.location.href = "../../vista/usuariosVista/cerrarSesion.php";
+        </script>
+        <?php
+    }
+}
+
+if (isset($_POST["ActualizarContrasena"])) {
+    $UsuarioModel->setIdUsuario($_SESSION['IdUsuario']);
+    $UsuarioModel->setContrasena($_POST['NuevaContrasena']);
+
+    $Usuario = $UsuarioModel->ConsultarContrasena();
+    if (isset($Usuario['idUsuario'])) {
+
+        $ContrasenaActualBd = $Usuario['contrasena'];
+        $ContrasenaActual = $_POST['ContrasenaActual'];
+        if (password_verify($ContrasenaActual, $ContrasenaActualBd)) {
+
+            $ActualizarContrasena = $UsuarioModel->ActualizarContrasena();
+            if ($ActualizarContrasena) {
+        ?>
+                <script>
+                    alert("Contraseña cambiada con exito, vuelve a inciar sesion con la nueva contraseña");
+                    window.location.href = "../../vista/usuariosVista/iniciarSesion.php";
+                </script>
+            <?php
+            }
+        } else {
+            ?>
+            <script>
+                alert("La Contraseña actual no coincide, intentelo de nuevo");
+                window.location.href = "../../vista/usuariosVista/cambiarContrasena.php";
+            </script>
 <?php
+        }
     }
 }

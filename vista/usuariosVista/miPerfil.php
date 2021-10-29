@@ -14,7 +14,7 @@ $ListaDatosPerfil = $UsuarioModel->ListarDatosUsuario();
         <div class="card-body register-card-body">
             <div class="row justify-content-between">
                 <h4>Mis datos</h4>
-                <a href="#" class="btn btn-sm btn-outline-warning">Desactivar mi cuenta</a>
+                <a  href="../../controlador/usuariosControlador/usuariosControlador.php?desactivarMiCuenta=true" id="DesactivarCuenta" name="DesactivarCuenta" class="btn btn-sm btn-outline-warning">Desactivar mi cuenta</a> 
             </div>
             <form action="../../controlador/usuariosControlador/usuariosControlador.php" method="post">
                 <input type="hidden" id="Administrador" name="Administrador" value="<?php echo $ListaDatosPerfil['administrador']; ?>">

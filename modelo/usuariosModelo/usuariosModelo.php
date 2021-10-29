@@ -227,4 +227,37 @@ class usuarioModelo
         }
 
     }
+
+    function ConsultarContrasena(){
+       
+        $Db = conexion::conectar();
+        $sql = $Db->prepare("SELECT * FROM usuarios WHERE idUsuario=:idUsuario ");
+
+        $sql->bindValue("idUsuario",$this->getIdUsuario());
+        try{
+            $sql->execute();
+           $Resultado =$sql->fetch(PDO::FETCH_ASSOC);
+            return $Resultado;
+        }catch( Exception $e){
+            echo ("ha ocurrido un error".$e->getMessage());
+        }
+        
+    }
+
+    function ActualizarContrasena(){
+        $CambioExitoso=false;
+        $Db = conexion::conectar();
+        $sql = $Db->prepare("UPDATE usuarios SET contrasena=:contrasena WHERE idUsuario=:idUsuario ");
+
+        $sql->bindValue("idUsuario",$this->getIdUsuario());
+        $sql->bindValue("contrasena", password_hash($this->getContrasena(), NULL));
+
+        try{
+            $sql->execute();
+           $CambioExitoso =true;
+            return $CambioExitoso;
+        }catch( Exception $e){
+            echo ("ha ocurrido un error".$e->getMessage());
+        }
+    }
 }
