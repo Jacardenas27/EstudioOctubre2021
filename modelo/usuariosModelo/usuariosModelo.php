@@ -182,7 +182,7 @@ class usuarioModelo
 
             return $Usuario;
         } catch (Exception $e) {
-            echo ("ha ocurrido un error" . $e->getMessage());
+            echo ("Ha ocurrido un error" . $e->getMessage());
         }
     }
 
@@ -205,7 +205,7 @@ class usuarioModelo
             return $editadoExitoso;
 
         }catch( Exception $e){
-            echo ("ha ocurrido un error".$e->getMessage());
+            echo ("Ha ocurrido un error".$e->getMessage());
         }
 
     }
@@ -223,7 +223,7 @@ class usuarioModelo
             return $cambioExitoso;
 
         }catch( Exception $e){
-            echo ("ha ocurrido un error".$e->getMessage());
+            echo ("Ha ocurrido un error".$e->getMessage());
         }
 
     }
@@ -239,7 +239,7 @@ class usuarioModelo
            $Resultado =$sql->fetch(PDO::FETCH_ASSOC);
             return $Resultado;
         }catch( Exception $e){
-            echo ("ha ocurrido un error".$e->getMessage());
+            echo ("Ha ocurrido un error".$e->getMessage());
         }
         
     }
@@ -257,7 +257,7 @@ class usuarioModelo
            $CambioExitoso =true;
             return $CambioExitoso;
         }catch( Exception $e){
-            echo ("ha ocurrido un error".$e->getMessage());
+            echo ("Ha ocurrido un error".$e->getMessage());
         }
     }
 }
