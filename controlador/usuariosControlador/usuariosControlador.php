@@ -227,3 +227,20 @@ if (isset($_POST["ActualizarContrasena"])) {
         }
     }
 }
+if(isset($_POST["Avatar"])){
+    $UsuarioModel->setIdUsuario($_SESSION['IdUsuario']);
+    $UsuarioModel->setIdAvatar($_POST['Avatar']);
+
+$ActualizarAvatarExitoso = $UsuarioModel->ActualizarAvatar();
+
+if (isset($ActualizarAvatarExitoso['idUsuario'])) {
+    $_SESSION['NombreAvatar'] = $ActualizarAvatarExitoso['nombreAvatar'];
+   ?>
+   <script>
+        alert("cambio de Avatar Exitoso");
+       window.location.href = "../../vista/panelAdministrativo/index.php";
+   </script>
+<?php
+}
+
+}         

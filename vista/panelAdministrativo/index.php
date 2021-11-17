@@ -1,5 +1,7 @@
+
 <?php
 require_once("../plantillaVista/header.php");
+
 ?>
 <div class="row">
   <div class="col-lg-6">

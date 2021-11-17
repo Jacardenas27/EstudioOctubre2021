@@ -3,6 +3,13 @@
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
+<?php 
+session_start();
+if(!(isset($_SESSION['IdUsuario']))){
+    header("Location: cerrarSesion.php"); 
+} 
+?>
+
 <html lang="en">
 
 <head>
@@ -59,7 +66,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <!-- Message End -->
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
+                        <a href="../usuariosVista/cambiarAvatar.php" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
                                 <div class="media-body">
@@ -85,7 +92,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <!-- Message End -->
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="cerrarSesion.php" class="dropdown-item">
+                        <a href="../usuariosVista/cerrarSesion.php" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
                                 <div class="media-body">
@@ -116,10 +123,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="../publico/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                        <img src="../publico/dist/img/avatares/<?php echo $_SESSION['NombreAvatar'];?>" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Nombre Usuario</a>
+                        <a href="#" class="d-block"><?php echo $_SESSION['Nombres'];?></a>
                     </div>
                 </div>
 

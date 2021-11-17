@@ -1,8 +1,5 @@
 <?php
-session_start();
-if(!(isset($_SESSION['IdUsuario']))){
-    header("Location: cerrarSesion.php"); 
-} 
+
 require_once("../plantillaVista/header.php");
 ?>
 <div class="d-flex justify-content-center">

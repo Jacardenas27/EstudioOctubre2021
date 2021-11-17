@@ -141,7 +141,7 @@ class usuarioModelo
         $sql->bindValue("FechaNacimiento", $this->getFechaNacimiento());
         $sql->bindValue("Correo", strtolower($this->getCorreo()));
         $sql->bindValue("Contrasena", password_hash($this->getContrasena(), NULL));
-        $sql->bindValue("Administrador",$this->getAdministrador());
+        $sql->bindValue("Administrador", $this->getAdministrador());
 
         try {
             $sql->execute();
@@ -157,7 +157,7 @@ class usuarioModelo
 
         $Db = conexion::conectar();
         $sql = $Db->prepare("SELECT idUsuario,nombres,apellidos,fechaNacimiento,correo,administrador,estado FROM usuarios WHERE estado=:estado ORDER BY nombres ASC ");
-            $sql->bindValue("estado",$this->getEstado());
+        $sql->bindValue("estado", $this->getEstado());
 
         try {
             $sql->execute();
@@ -186,78 +186,119 @@ class usuarioModelo
         }
     }
 
-    function EditarUsuario(){
-        $editadoExitoso= false;
+    function EditarUsuario()
+    {
+        $editadoExitoso = false;
         $Db = conexion::conectar();
 
         $sql = $Db->prepare("UPDATE usuarios SET nombres=:nombres,apellidos=:apellidos,fechaNacimiento=:fechaNacimiento, correo=:correo,administrador=:administrador,estado=1 WHERE idUsuario=:idUsuario");
-        
-        $sql->bindValue("idUsuario",$this->getIdUsuario());
+
+        $sql->bindValue("idUsuario", $this->getIdUsuario());
         $sql->bindValue("nombres", strtoupper($this->getNombres()));
         $sql->bindValue("apellidos", strtoupper($this->getApellidos()));
-        $sql->bindValue("fechaNacimiento",$this->getFechaNacimiento());
-        $sql->bindValue("correo",strtolower($this->getCorreo()));
-        $sql->bindValue("administrador",$this->getAdministrador());
+        $sql->bindValue("fechaNacimiento", $this->getFechaNacimiento());
+        $sql->bindValue("correo", strtolower($this->getCorreo()));
+        $sql->bindValue("administrador", $this->getAdministrador());
 
-        try{
+        try {
             $sql->execute();
-            $editadoExitoso= true;
+            $editadoExitoso = true;
             return $editadoExitoso;
-
-        }catch( Exception $e){
-            echo ("Ha ocurrido un error".$e->getMessage());
+        } catch (Exception $e) {
+            echo ("Ha ocurrido un error" . $e->getMessage());
         }
-
     }
 
-    function CambiarEstado(){
-        $cambioExitoso=false;
+    function CambiarEstado()
+    {
+        $cambioExitoso = false;
         $Db = conexion::conectar();
         $sql = $Db->prepare("UPDATE usuarios SET estado=:estado WHERE idUsuario=:idUsuario");
 
-        $sql->bindValue("estado",$this->getEstado());
-        $sql->bindValue("idUsuario",$this->getIdUsuario());
-        try{
+        $sql->bindValue("estado", $this->getEstado());
+        $sql->bindValue("idUsuario", $this->getIdUsuario());
+        try {
             $sql->execute();
-            $cambioExitoso= true;
+            $cambioExitoso = true;
             return $cambioExitoso;
-
-        }catch( Exception $e){
-            echo ("Ha ocurrido un error".$e->getMessage());
+        } catch (Exception $e) {
+            echo ("Ha ocurrido un error" . $e->getMessage());
         }
-
     }
 
-    function ConsultarContrasena(){
-       
+    function ConsultarContrasena()
+    {
+
         $Db = conexion::conectar();
         $sql = $Db->prepare("SELECT * FROM usuarios WHERE idUsuario=:idUsuario ");
 
-        $sql->bindValue("idUsuario",$this->getIdUsuario());
-        try{
+        $sql->bindValue("idUsuario", $this->getIdUsuario());
+        try {
             $sql->execute();
-           $Resultado =$sql->fetch(PDO::FETCH_ASSOC);
+            $Resultado = $sql->fetch(PDO::FETCH_ASSOC);
             return $Resultado;
-        }catch( Exception $e){
-            echo ("Ha ocurrido un error".$e->getMessage());
+        } catch (Exception $e) {
+            echo ("Ha ocurrido un error" . $e->getMessage());
         }
-        
     }
 
-    function ActualizarContrasena(){
-        $CambioExitoso=false;
+    function ActualizarContrasena()
+    {
+        $CambioExitoso = false;
         $Db = conexion::conectar();
         $sql = $Db->prepare("UPDATE usuarios SET contrasena=:contrasena WHERE idUsuario=:idUsuario ");
 
-        $sql->bindValue("idUsuario",$this->getIdUsuario());
+        $sql->bindValue("idUsuario", $this->getIdUsuario());
         $sql->bindValue("contrasena", password_hash($this->getContrasena(), NULL));
 
-        try{
+        try {
             $sql->execute();
-           $CambioExitoso =true;
+            $CambioExitoso = true;
             return $CambioExitoso;
-        }catch( Exception $e){
-            echo ("Ha ocurrido un error".$e->getMessage());
+        } catch (Exception $e) {
+            echo ("Ha ocurrido un error" . $e->getMessage());
+        }
+    }
+
+    function ListarAvatares()
+    {
+        $Db = conexion::conectar();
+        $sql = $Db->query("SELECT * FROM avatares");
+        try {
+
+            $sql->execute();
+            $Resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
+            return $Resultado;
+        } catch (Exception $e) {
+            echo ("Ha ocurrido un error" . $e->getMessage());
+        }
+    }
+
+    function ActualizarAvatar()
+    {
+        $cambioExitoso = false;
+        $Db = conexion::conectar();
+        $sql = $Db->prepare("UPDATE usuarios SET idAvatar=:idAvatar WHERE  idUsuario=:idUsuario ");
+        $sql->bindValue("idUsuario", $this->getIdUsuario());
+        $sql->bindValue("idAvatar", $this->getIdAvatar());
+        try {
+            $sql->execute();
+            $cambioExitoso = true;
+            if ($cambioExitoso) {
+                $sql = $Db->prepare("SELECT usuarios.*, avatares.nombreAvatar FROM usuarios 
+                JOIN avatares ON  usuarios.IdAvatar = avatares.idAvatar
+                 WHERE idUsuario = :idUsuario ");
+                $sql->bindValue("idUsuario", $this->getIdUsuario());
+                try {
+                    $sql->execute();
+                    $Resultado = $sql->fetch(PDO::FETCH_ASSOC);
+                } catch (Exception $e) {
+                    echo "Ha ocurrido un error: " . $e->getMessage();
+                }
+            }
+            return $Resultado;
+        } catch (Exception $e) {
+            echo ("Ha ocurrido un error" . $e->getMessage());
         }
     }
 }
